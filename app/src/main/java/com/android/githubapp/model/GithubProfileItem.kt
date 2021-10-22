@@ -1,7 +1,9 @@
 package com.android.githubapp.model
 
+import androidx.room.Entity
 import com.google.gson.annotations.SerializedName
 
+@Entity(tableName = "githubprofile")
 data class GithubProfileItem(
     @SerializedName("author")
     val author: String,
