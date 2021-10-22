@@ -18,6 +18,11 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    packagingOptions {
+        exclude 'META-INF/AL2.0'
+        exclude 'META-INF/LGPL2.1'
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -49,6 +54,8 @@ dependencies {
 
     implementation "com.google.dagger:hilt-android:2.38.1"
     kapt "com.google.dagger:hilt-compiler:2.38.1"
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
+    androidTestImplementation "androidx.arch.core:core-testing:2.1.0"
 
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
     implementation 'com.intuit.ssp:ssp-android:1.0.6'
@@ -75,7 +82,7 @@ dependencies {
     //Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
-
+    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutine_version"
     //lifecycle
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"

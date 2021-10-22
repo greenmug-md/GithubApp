@@ -1,22 +1,25 @@
 package com.android.githubapp.db
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.annotation.VisibleForTesting
+import androidx.lifecycle.LiveData
+import androidx.room.*
 import com.android.githubapp.model.GithubProfileItem
-import kotlinx.coroutines.flow.Flow
+
 
 @Dao
 interface GithubProfileDao {
 
     @Query("SELECT * FROM githubprofile")
-    fun getAllProfiles(): Flow<List<GithubProfileItem>>
+    fun getAllProfiles(): LiveData<List<GithubProfileItem>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertProfiles(restaurants: List<GithubProfileItem>)
+    suspend fun insertProfiles(githubProfile: List<GithubProfileItem>)
 
     @Query("DELETE FROM githubprofile")
     suspend fun deleteAllProfiles()
+
+    @Delete
+    suspend fun deleteProfileItems(githubProfile: GithubProfileItem)
+
 
 }
