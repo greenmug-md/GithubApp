@@ -12,12 +12,6 @@ import com.android.githubapp.features.trending.fragment.GithubFragment
 class GithubActvity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(com.android.githubapp.R.layout.activity_github_profile)
-
-        if (savedInstanceState == null) {
-            val fragment = GithubFragment()
-            supportFragmentManager.beginTransaction()
-                .add(R.id.fragment_container_view, fragment, GithubFragment.TAG).commit()
-        }
+        setContentView(R.layout.activity_github_profile)
     }
 }
